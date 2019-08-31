@@ -20,7 +20,7 @@ np.random.seed(3)
 train_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
-        '/Users/maegse/Documents/dataset/train', # train 데이터 경로
+        '/Users/canu/Desktop/handwriting-master 2/test', # train 데이터 경로
         target_size=(24, 24),
         batch_size=3,
         class_mode='categorical')
@@ -28,7 +28,7 @@ train_generator = train_datagen.flow_from_directory(
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 test_generator = test_datagen.flow_from_directory(
-        '/Users/maegse/Documents/dataset/test', # test 데이터 경로
+        '/Users/canu/Desktop/handwriting-master 2/test', # test 데이터 경로
         target_size=(24, 24),    
         batch_size=3,
         class_mode='categorical')
@@ -39,6 +39,8 @@ model.add(Conv2D(32, kernel_size=(3, 3),
                  activation='relu',
                  input_shape=(24,24,3)))
 model.add(Conv2D(64, (3, 3), activation='relu'))
+model.add(Conv2D(128, (3, 3), activation='relu'))
+model.add(Conv2D(256, (3, 3), activation='relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
@@ -68,11 +70,12 @@ print(test_generator.class_indices)
 print(output)
 
 
-# 코드 출처 :  https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
+# 참고코드 :  https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
+# (정확도를 높이기 위한 참고코드에 추가적인 인공신경망 직접 재설계.정확도100% 가까이 도달.)
 # 데이터셋 : 직접 제작.
 
 
-# In[ ]:
+
 
 
 

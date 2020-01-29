@@ -22,4 +22,4 @@ CNN 인공신경망을 제 글씨체에 맞게 설계 해보았습니다.
 <br>
 <br>
 
-<img width="500" alt="스크린샷 2020-01-29 오후 11 11 34" src="https://user-images.githubusercontent.com/45910733/73365519-bdf83a00-42ef-11ea-897c-c72f47097ac0.png">
+<img width="700" alt="스크린샷 2020-01-29 오후 11 11 34" src="https://user-images.githubusercontent.com/45910733/73365519-bdf83a00-42ef-11ea-897c-c72f47097ac0.png">

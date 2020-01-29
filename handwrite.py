@@ -70,9 +70,7 @@ print(test_generator.class_indices)
 print(output)
 
 
-# 참고코드 :  https://tykimos.github.io/2017/03/08/CNN_Getting_Started/
-# (정확도를 높이기 위한 참고코드에 추가적인 인공신경망 직접 재설계.정확도100% 가까이 도달.)
-# 데이터셋 : 직접 제작.
+
 
 
 

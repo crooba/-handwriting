@@ -4,7 +4,6 @@
 # In[3]:
 
 
-# 0. 사용할 패키지 불러오기
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
@@ -13,10 +12,10 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
 
-# 랜덤시드 고정시키기
+# 일정한 결과를 도출하기 위해 랜덤시드 고정시킵니다.
 np.random.seed(3)
 
-# 1. 데이터 생성하기
+# 데이터를 변형 확대합니다.
 train_datagen = ImageDataGenerator(rescale=1./255)
 
 train_generator = train_datagen.flow_from_directory(
@@ -33,7 +32,7 @@ test_generator = test_datagen.flow_from_directory(
         batch_size=3,
         class_mode='categorical')
 
-# 2. 모델 구성하기
+# 2. CNN인공신경망을 설계합니다.
 model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3),
                  activation='relu',
@@ -46,10 +45,10 @@ model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
-# 3. 모델 학습과정 설정하기
+# 신경망에 필요한 주요함수들을 설정 해 줍니다.
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-# 4. 모델 학습시키기
+# 인공신경망에 학습명령을 내립니다.
 model.fit_generator(
         train_generator,
         steps_per_epoch=15,
@@ -57,12 +56,12 @@ model.fit_generator(
         validation_data=test_generator,
         validation_steps=5)
 
-# 5. 모델 평가하기
+# 인공신경망의 학습결과를 평가합니다.
 print("-- Evaluate --")
 scores = model.evaluate_generator(test_generator, steps=5)
 print("%s: %.2f%%" %(model.metrics_names[1], scores[1]*100))
 
-# 6. 모델 사용하기
+# 실제 테스트셋으로 인공신경망 예측을 해봅니다.
 print("-- Predict --")
 output = model.predict_generator(test_generator, steps=5)
 np.set_printoptions(formatter={'float': lambda x: "{0:0.3f}".format(x)})
